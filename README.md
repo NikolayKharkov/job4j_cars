@@ -12,10 +12,10 @@
 - Загрузка файлов
 
 
-![alt text](screenshots/all_posts.jpg)
-![alt text](screenshots/edit_post.jpg)
-![alt text](screenshots/my_posts.jpg)
-![alt text](screenshots/when_one_sold.jpg)
-![alt text](screenshots/add.jpg)
+![alt text](screenShots/all_posts.jpg)
+![alt text](screenShots/edit_post.jpg)
+![alt text](screenShots/my_posts.jpg)
+![alt text](screenShots/when_one_sold.jpg)
+![alt text](screenShots/add.jpg)
 
 
