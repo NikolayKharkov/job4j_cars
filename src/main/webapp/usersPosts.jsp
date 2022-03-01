@@ -17,6 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Сайт по продажи автомобилей</title>
 </head>
 <body>
@@ -26,39 +27,44 @@
         <div class="row">
             <div class="card" style="width: 100%">
                 <div class="card-header">
-                    Объявления
+                     Мои объявления
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">Название</th>
-                            <th scope="col">Марка</th>
-                            <th scope="col">Кузов</th>
                             <th scope="col">Фото</th>
-                            <th scope="col">Описание</th>
-                            <th scope="col">Владелец</th>
-                            <th scope="col">Статус</th>
+                            <th scope="col">Сменить статус</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${posts}" var="post">
                             <tr>
-                                <td><c:out value="${post.name}"/></td>
-                                <td><c:out value="${post.carMark.name}"/></td>
-                                <td><c:out value="${post.carBody.name}"/></td>
+                                <td>
+                                    <a href='<c:url value="/editPost.jsp?id=${post.id}"/>'>
+                                        <i class="fa fa-edit mr-3"></i>
+                                    </a>
+                                    <c:out value="${post.name}"/>
+                                </td>
                                 <td>
                                     <img src="<c:url value='/photoDownload?id=${post.id}'/>" width="100px" height="100px"/>
                                 </td>
-                                <td><c:out value="${post.description}"/></td>
-                                <td><c:out value="${post.user.email}"/></td>
                                 <td>
                                     <c:if test="${post.sold == false}">
-                                        <a class="btn btn-success" disabled>В продаже</a>
+                                        <a class="btn btn-success" href="<c:url value='/updatePostStatus?id=${post.id}'/>">
+                                            На "продано"</a>
                                     </c:if>
                                     <c:if test="${post.sold == true}">
-                                        <a class="btn btn-secondary" disabled>Продано</a>
+                                        <a class="btn btn-secondary" href="<c:url value='/updatePostStatus?id=${post.id}'/>">
+                                            На "продаже"</a>
                                     </c:if>
+                                </td>
+                                <td><a class="btn btn-primary" href="<c:url value='/photoUpload?id=${post.id}'/>">
+                                    Добавить фото</a>
+                                </td>
+                                <td><a class="btn btn-danger" href="<c:url value='/deletePost?id=${post.id}'/>">
+                                    Удалить объявление</a>
                                 </td>
                             </tr>
                         </c:forEach>

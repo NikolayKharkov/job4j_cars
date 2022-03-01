@@ -1,7 +1,99 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>servlets.IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/index.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>servlets.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/auth.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>servlets.RegServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/reg.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UsersPostsServlet</servlet-name>
+    <servlet-class>servlets.UsersPostsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsersPostsServlet</servlet-name>
+    <url-pattern>/usersPosts.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditPostServlet</servlet-name>
+    <servlet-class>servlets.EditPostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditPostServlet</servlet-name>
+    <url-pattern>/editPost.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UpdatePostStatus</servlet-name>
+    <servlet-class>servlets.UpdatePostStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePostStatus</servlet-name>
+    <url-pattern>/updatePostStatus</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeletePost</servlet-name>
+    <servlet-class>servlets.DeletePostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePost</servlet-name>
+    <url-pattern>/deletePost</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PhotoUploadServlet</servlet-name>
+    <servlet-class>servlets.PhotoUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PhotoUploadServlet</servlet-name>
+    <url-pattern>/photoUpload</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>PhotoDownloadServlet</servlet-name>
+    <servlet-class>servlets.PhotoDownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PhotoDownloadServlet</servlet-name>
+    <url-pattern>/photoDownload</url-pattern>
+  </servlet-mapping>
+
 </web-app>
