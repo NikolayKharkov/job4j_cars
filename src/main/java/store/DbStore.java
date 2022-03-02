@@ -95,6 +95,14 @@ public class DbStore implements Store {
     }
 
     @Override
+    public void updatePostPhotoStatus(int idPost) {
+        Post post = findPostById(idPost);
+        post.setPhoto(true);
+        updatePost(post);
+    }
+
+
+    @Override
     public List<Post> findAllPosts() {
         return this.tx(
                 session -> session.createQuery("from Post order by created").list()

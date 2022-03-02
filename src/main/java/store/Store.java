@@ -17,6 +17,7 @@ public interface Store {
     void deletePost(Post post);
     void updatePost(Post post);
     void updatePostStatus(int idPost);
+    void updatePostPhotoStatus(int idPost);
     List<Post> findAllPosts();
     Post findPostById(int id);
     List<Post> findAllUsersPosts(int userId);

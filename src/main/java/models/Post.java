@@ -16,6 +16,7 @@ public class Post {
     @Temporal(TemporalType.DATE)
     private Date created;
     private boolean sold;
+    private boolean photo;
     @ManyToOne
     @JoinColumn(name = "mark_id", foreignKey = @ForeignKey(name = "CarMark_ID_FK"))
     private CarMark carMark;
@@ -40,6 +41,7 @@ public class Post {
         result.carMark = carMark;
         result.carBody = carBody;
         result.user = user;
+        result.photo = false;
         return result;
     }
 
@@ -141,5 +143,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(boolean photo) {
+        this.photo = photo;
     }
 }

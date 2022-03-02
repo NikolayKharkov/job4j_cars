@@ -10,6 +10,7 @@ CREATE TABLE posts (
 	name VARCHAR(255),
 	description TEXT,
 	sold boolean,
+	photo boolean,
 	mark_id INTEGER REFERENCES cars_marks (Id),
 	body_id INTEGER REFERENCES cars_bodies (Id),
 	user_id INTEGER REFERENCES user_id (Id),
