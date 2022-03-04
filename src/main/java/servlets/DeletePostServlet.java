@@ -1,7 +1,7 @@
 package servlets;
 
 import models.Property;
-import store.DbStore;
+import repositories.PostRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ public class DeletePostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        DbStore.instOf().deletePost(DbStore.instOf().findPostById(Integer.valueOf(id)));
+        PostRepository.instOf().deletePost(PostRepository.instOf().findPostById(Integer.valueOf(id)));
         for (File file : new File(Property.returnValue("postsPhoto")).listFiles()) {
             String fileName = file.getName();
             if (id.equals(fileName.substring(0, fileName.indexOf('.')))) {

@@ -2,7 +2,9 @@ package servlets;
 
 import models.Post;
 import models.User;
-import store.DbStore;
+import repositories.CarBodyRepository;
+import repositories.CarMarkRepository;
+import repositories.PostRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ public class EditPostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession().getAttribute("user");
-        req.setAttribute("posts", new ArrayList<>(DbStore.instOf().findAllUsersPosts(user.getId())));
+        req.setAttribute("posts", new ArrayList<>(PostRepository.instOf().findAllUsersPosts(user.getId())));
         req.getRequestDispatcher("usersPosts.jsp").forward(req, resp);
     }
 
@@ -28,11 +30,11 @@ public class EditPostServlet extends HttpServlet {
                 req.getParameter("name"),
                 req.getParameter("description"),
                 false,
-                DbStore.instOf().findCarMarkById(Integer.valueOf(req.getParameter("mark"))),
-                DbStore.instOf().findCarBodyById(Integer.valueOf(req.getParameter("body"))),
+                CarMarkRepository.instOf().findCarMarkById(Integer.valueOf(req.getParameter("mark"))),
+                CarBodyRepository.instOf().findCarBodyById(Integer.valueOf(req.getParameter("body"))),
                 (User) req.getSession().getAttribute("user"));
         post.setId(Integer.valueOf(req.getParameter("id")));
-        DbStore.instOf().addPost(post);
+        PostRepository.instOf().addPost(post);
         resp.sendRedirect(req.getContextPath() + "/usersPosts.do");
     }
 }

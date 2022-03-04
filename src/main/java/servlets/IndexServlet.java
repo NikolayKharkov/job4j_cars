@@ -1,6 +1,6 @@
 package servlets;
 
-import store.DbStore;
+import repositories.PostRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("posts", new ArrayList<>(DbStore.instOf().findAllPosts()));
+        req.setAttribute("posts", new ArrayList<>(PostRepository.instOf().findAllPosts()));
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

@@ -1,12 +1,11 @@
 package servlets;
 
-import models.Post;
 import models.Property;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import store.DbStore;
+import repositories.PostRepository;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -62,7 +61,7 @@ public class PhotoUploadServlet extends HttpServlet {
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
-        DbStore.instOf().updatePostPhotoStatus(Integer.valueOf(id));
+        PostRepository.instOf().updatePostPhotoStatus(Integer.valueOf(id));
         resp.sendRedirect(req.getContextPath() + "/usersPosts.do");
     }
 }

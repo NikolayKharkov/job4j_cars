@@ -1,6 +1,10 @@
 <%@ page import="models.Post" %>
-<%@ page import="store.DbStore" %>
 <%@ page import="models.User" %>
+<%@ page import="repositories.CarMarkRepository" %>
+<%@ page import="repositories.CarBodyRepository" %>
+<%@ page import="repositories.UserRepository" %>
+<%@ page import="repositories.PostRepository" %>
+<%@ page import="repositories.PostRepository" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
@@ -27,7 +31,7 @@
     String id = request.getParameter("id");
     Post post = Post.of("", "", false, null, null, (User) request.getSession().getAttribute("user"));
     if (id != null) {
-        post = DbStore.instOf().findPostById(Integer.valueOf(id));
+        post = PostRepository.instOf().findPostById(Integer.valueOf(id));
     }
 %>
 <div class="container">
@@ -58,7 +62,7 @@
                     <div class="form-group">
                         <label>Выберете марку автомобиля</label>
                         <select class="form-control" name="mark">
-                            <c:forEach items="${DbStore.instOf().findAllCarMark()}" var="mark">
+                            <c:forEach items="${CarMarkRepository.instOf().findAllCarMark()}" var="mark">
                                 <option value="${mark.id}"><c:out value="${mark.name}" /></option>
                             </c:forEach>
                         </select>
@@ -66,7 +70,7 @@
                     <div class="form-group">
                         <label>Выберете марку автомобиля</label>
                         <select class="form-control" name="body">
-                            <c:forEach items="${DbStore.instOf().findAllCarBody()}" var="body">
+                            <c:forEach items="${CarBodyRepository.instOf().findAllCarBody()}" var="body">
                                 <option value="${body.id}"><c:out value="${body.name}" /></option>
                             </c:forEach>
                         </select>

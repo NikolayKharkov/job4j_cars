@@ -1,6 +1,6 @@
 package servlets;
 
-import store.DbStore;
+import repositories.PostRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ public class LogoutServlet  extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.invalidate();
-        req.setAttribute("posts", new ArrayList<>(DbStore.instOf().findAllPosts()));
+        req.setAttribute("posts", new ArrayList<>(PostRepository.instOf().findAllPosts()));
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

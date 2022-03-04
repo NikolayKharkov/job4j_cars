@@ -1,6 +1,6 @@
 package servlets;
 
-import store.DbStore;
+import repositories.PostRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +12,7 @@ public class UpdatePostStatusServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        DbStore.instOf().updatePostStatus(Integer.valueOf(id));
+        PostRepository.instOf().updatePostStatus(Integer.valueOf(id));
         resp.sendRedirect(req.getContextPath() + "/usersPosts.do");
 
     }

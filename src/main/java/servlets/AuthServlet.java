@@ -1,7 +1,7 @@
 package servlets;
 
 import models.User;
-import store.DbStore;
+import repositories.UserRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +16,7 @@ public class AuthServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        User user = DbStore.instOf().findUserByEmail(email);
+        User user = UserRepository.instOf().findUserByEmail(email);
         if (!Objects.isNull(user) && password.equals(user.getPassword())) {
             HttpSession sc = req.getSession();
             sc.setAttribute("user", user);
